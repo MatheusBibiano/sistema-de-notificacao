@@ -118,5 +118,5 @@ npm test
 ```
 
 ## Licença
-UNLICENSED
+MIT LICENSE
 
