@@ -1,0 +1,118 @@
+.notificacao {
+  max-width: 760px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+input[type='text'] {
+  flex: 1 1 auto;
+  max-width: 520px;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button[type='submit'] {
+  padding: 0.625rem 1rem;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.empty {
+  margin: 1.25rem 0 0.5rem;
+  color: #6b7280;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.25rem;
+  width: 100%;
+  max-width: 720px;
+}
+
+.item {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  background: #fff;
+  text-align: left;
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.id {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.conteudo {
+  margin: 0.25rem 0 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.status-aguardando {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+.status-sucesso {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.status-falha,
+.status-erro {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.status-desconhecido {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}

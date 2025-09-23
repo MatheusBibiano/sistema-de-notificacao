@@ -1,0 +1,36 @@
+<div class="notificacao">
+  <h1>Notificações</h1>
+
+  <form (submit)="$event.preventDefault(); send()" aria-label="Formulário de notificação">
+    <input
+      type="text"
+      [formControl]="input"
+      placeholder="Conteúdo da mensagem"
+      aria-label="Conteúdo da mensagem"
+    />
+    <button type="submit" [disabled]="input.invalid">Enviar Notificação</button>
+  </form>
+
+  @if (notificacoes().length === 0) {
+    <p class="empty">Nenhuma notificação enviada ainda.</p>
+  }
+
+  <ul class="lista">
+    @for (n of notificacoes(); track n.mensagemId) {
+      <li class="item">
+        <div class="topo">
+          <code class="id">{{ n.mensagemId }}</code>
+          <strong
+            class="status-badge"
+            [class.status-aguardando]="n.status === 'AGUARDANDO_PROCESSAMENTO'"
+            [class.status-sucesso]="n.status === 'PROCESSADO_SUCESSO'"
+            [class.status-falha]="n.status === 'FALHA_PROCESSAMENTO'"
+            [class.status-erro]="n.status === 'ERRO_ENVIO'"
+            [class.status-desconhecido]="!n.status"
+          >{{ n.status ?? 'DESCONHECIDO' }}</strong>
+        </div>
+        <p class="conteudo">{{ n.conteudoMensagem }}</p>
+      </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: desafio-rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 5s
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  backend:
+    build:
+      context: ./backend
+    container_name: desafio-backend
+    environment:
+      - PORT=3000
+      - MEU_NOME=${MEU_NOME:-matheus}
+      - RABBITMQ_URL=${RABBITMQ_URL:-amqp://guest:guest@rabbitmq:5672}
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - '3000:3000'
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: desafio-frontend
+    depends_on:
+      - backend
+    ports:
+      - '4200:80'
+    environment:
+      - NG_APP_API_URL=http://localhost:3000/api
+      - NG_APP_WS_URL=http://localhost:3000
+
+
